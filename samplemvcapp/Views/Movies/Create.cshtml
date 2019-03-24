@@ -1,0 +1,63 @@
+@model samplemvcapp.Models.Movie
+
+@{
+    ViewBag.Title = "Create Movie";
+    Layout = "~//Views//Shared//_Layout.cshtml";
+}
+
+<h2>Create Movie</h2>
+
+<form id="createform" action="@Url.Action("Create")" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.MainMovieGenre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-7">
+            @Html.EnumDropDownListFor(model => model.MainMovieGenre, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MainMovieGenre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.SecondMovieGenre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-7">
+            @Html.EnumDropDownListFor(model => model.SecondMovieGenre, "Optional Genre", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SecondMovieGenre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MainMovieGenre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-7">
+            @Html.EnumDropDownListFor(model => model.ThirdMovieGenre, "Optional Genre",htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ThirdMovieGenre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MovieTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-7">
+            @Html.EditorFor(model => model.MovieTitle, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MovieTitle, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.MovieLength, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-7">
+            @Html.EditorFor(model => model.MovieLength, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MovieLength, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.MovieReleaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-7">
+            @Html.EditorFor(model => model.MovieReleaseDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MovieReleaseDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div>
+        <input type="submit" value="Create" class="btn btn-success"/>
+    </div></div>
+</form>

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<samplemvcapp.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~\\Views\\Shared\\_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<span>@Html.ActionLink("Create Movie","Create",null,new {@class="btn btn-primary"})</span>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Movie Name</th>
+        <th>Movie Genre</th>
+        <th>Movie Length</th>
+        <th>Movie Release Date</th>
+    </tr>
+    
+    @foreach(var movie in Model)
+    {
+        <tr>
+            <td> @Html.DisplayFor(itemmovie => movie.MovieTitle)</td>
+        </tr>
+    }
+</table>
